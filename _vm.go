@@ -21,13 +21,13 @@ func mainLoop(L *LState, baseframe *callFrame) {
 	}
 
 	for {
+		cf = L.currentFrame
+		inst = cf.Fn.Proto.Code[cf.Pc]
+		cf.Pc++
 		if L.tryClosed {
 			L.RaiseError("vm closing")
 			return
 		}
-		cf = L.currentFrame
-		inst = cf.Fn.Proto.Code[cf.Pc]
-		cf.Pc++
 		if jumpTable[int(inst>>26)](L, inst, baseframe) == 1 {
 			return
 		}
