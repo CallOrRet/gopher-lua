@@ -1449,6 +1449,14 @@ func (ls *LState) Close() {
 	ls.stack = nil
 }
 
+func (ls *LState) TryClose() {
+	ls.tryClosed = true
+}
+
+func (ls *LState) IsClosing() bool {
+	return ls.tryClosed
+}
+
 /* registry operations {{{ */
 
 func (ls *LState) GetTop() int {

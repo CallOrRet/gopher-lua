@@ -195,6 +195,8 @@ type LState struct {
 	mainLoop     func(*LState, *callFrame)
 	ctx          context.Context
 	ctxCancelFn  context.CancelFunc
+
+	tryClosed bool
 }
 
 func (ls *LState) String() string   { return fmt.Sprintf("thread: %p", ls) }

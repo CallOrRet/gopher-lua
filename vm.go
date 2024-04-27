@@ -25,6 +25,10 @@ func mainLoop(L *LState, baseframe *callFrame) {
 	}
 
 	for {
+		if L.tryClosed {
+			L.RaiseError("vm closing")
+			return
+		}
 		cf = L.currentFrame
 		inst = cf.Fn.Proto.Code[cf.Pc]
 		cf.Pc++
@@ -48,12 +52,14 @@ func mainLoopWithContext(L *LState, baseframe *callFrame) {
 		return
 	}
 
+	done := L.ctx.Done()
+
 	for {
 		cf = L.currentFrame
 		inst = cf.Fn.Proto.Code[cf.Pc]
 		cf.Pc++
 		select {
-		case <-L.ctx.Done():
+		case <-done:
 			L.RaiseError(L.ctx.Err().Error())
 			return
 		default:
