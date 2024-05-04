@@ -1,4 +1,4 @@
-module github.com/push-edp/gopher-lua
+module github.com/CallOrRet/gopher-lua
 
 go 1.17
 

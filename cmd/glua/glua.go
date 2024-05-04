@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/CallOrRet/gopher-lua"
+	"github.com/CallOrRet/gopher-lua/parse"
 	"github.com/chzyer/readline"
-	"github.com/push-edp/gopher-lua"
-	"github.com/push-edp/gopher-lua/parse"
 	"os"
 	"runtime/pprof"
 )

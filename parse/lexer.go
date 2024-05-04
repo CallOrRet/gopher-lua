@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/push-edp/gopher-lua/ast"
+	"github.com/CallOrRet/gopher-lua/ast"
 )
 
 const EOF = -1
